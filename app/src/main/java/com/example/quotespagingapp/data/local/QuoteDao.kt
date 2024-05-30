@@ -12,7 +12,7 @@ interface QuoteDao {
     suspend fun upsertAll(quotes: List<QuoteEntity>)
 
     @Query("SELECT * FROM quoteentity")
-    fun pagingSource(): PagingSource<String, QuoteEntity>
+    fun pagingSource(): PagingSource<Int, QuoteEntity>
 
     @Query("DELETE FROM quoteentity")
     suspend fun clearAll()

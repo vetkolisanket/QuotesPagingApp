@@ -1,13 +1,14 @@
 package com.example.quotespagingapp.data.mapper
 
+import com.example.quotespagingapp.AppModule
 import com.example.quotespagingapp.data.local.QuoteEntity
-import com.example.quotespagingapp.data.remote.QuoteDto
-import com.example.quotespagingapp.data.remote.QuotesResponse
+import com.example.quotespagingapp.data.remote.model.QuoteDto
+import com.example.quotespagingapp.data.remote.model.QuotesResponse
 import com.example.quotespagingapp.domain.Quote
 
-fun QuoteDto.toQuoteEntity(page: Int): QuoteEntity {
+fun QuoteDto.toQuoteEntity(page: Int, index: Int): QuoteEntity {
     return QuoteEntity(
-        id = _id,
+        id = page * AppModule.PAGE_SIZE + index,
         page = page,
         quoteAuthor,
         quoteGenre, quoteText
@@ -21,5 +22,10 @@ fun QuoteEntity.toQuote(): Quote {
 }
 
 fun QuotesResponse.toQuoteEntities(): List<QuoteEntity> {
-    return data.map { it.toQuoteEntity(pagination.currentPage) }
+    return data.mapIndexed { index, quoteDto ->
+        quoteDto.toQuoteEntity(
+            pagination.currentPage,
+            index
+        )
+    }
 }

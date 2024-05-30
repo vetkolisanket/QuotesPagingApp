@@ -61,9 +61,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
+
     //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    //Hilt compose
+    implementation(libs.androidx.hilt.navigation.compose)
+
     // Coil Compose
     implementation(libs.coil.compose)
     // Paging

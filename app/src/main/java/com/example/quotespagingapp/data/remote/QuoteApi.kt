@@ -1,5 +1,6 @@
 package com.example.quotespagingapp.data.remote
 
+import com.example.quotespagingapp.data.remote.model.QuotesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

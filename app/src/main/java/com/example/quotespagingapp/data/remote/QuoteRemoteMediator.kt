@@ -8,6 +8,7 @@ import androidx.room.withTransaction
 import com.example.quotespagingapp.data.local.QuoteDatabase
 import com.example.quotespagingapp.data.local.QuoteEntity
 import com.example.quotespagingapp.data.mapper.toQuoteEntities
+import kotlinx.coroutines.delay
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -15,10 +16,10 @@ import java.io.IOException
 class QuoteRemoteMediator(
     private val quoteDb: QuoteDatabase,
     private val quoteApi: QuoteApi
-): RemoteMediator<String, QuoteEntity>() {
+): RemoteMediator<Int, QuoteEntity>() {
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<String, QuoteEntity>
+        state: PagingState<Int, QuoteEntity>
     ): MediatorResult {
         return try {
             val loadKey = when (loadType) {

@@ -1,4 +1,4 @@
-package com.example.quotespagingapp.data.remote
+package com.example.quotespagingapp.data.remote.model
 
 data class QuoteDto(
     val __v: Int,

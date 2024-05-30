@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class QuoteEntity(
     @PrimaryKey
-    val id: String,
+    val id: Int,
     val page: Int,
     val quoteAuthor: String,
     val quoteGenre: String,
